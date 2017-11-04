@@ -18,6 +18,8 @@ package warehouseclient;
 
 import Main.Client;
 import java.awt.BorderLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,32 +27,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import ui.CheckoutButton;
 import ui.TableScrollPane;
+import ui.UI;
 /**
  *
  * @author Daniil Gentili
  */
 public class WarehouseClient {
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-    public static void createAndShowGUI(Client client) {
-        JFrame frame = new JFrame("Client");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        JPanel panel = new JPanel();
-        panel.add(new CheckoutButton(client), BorderLayout.CENTER);
-        
-        frame.getContentPane().add(new TableScrollPane(client, client.getWarehouse()),BorderLayout.PAGE_START);
-        frame.getContentPane().add(new TableScrollPane(client, client.getCart()),BorderLayout.CENTER );
-        frame.getContentPane().add(panel, BorderLayout.PAGE_END);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-
     /**
      * @param args the command line arguments
      */
@@ -69,7 +51,7 @@ public class WarehouseClient {
             @Override
             public void run() {
                 try {
-                    createAndShowGUI(new Client("localhost", 9090));
+                    new UI(new Client("localhost", 9090), new JFrame("Client"));
                 } catch (IOException ex) {
                     Logger.getLogger(WarehouseClient.class.getName()).log(Level.SEVERE, null, ex);
                 }

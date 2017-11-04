@@ -41,7 +41,7 @@ public class CheckoutButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         
         try {
-            client.commit();
+            client.checkout();
             JOptionPane.showMessageDialog(null, "OK!");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Errore I/O", ERROR_MESSAGE);
