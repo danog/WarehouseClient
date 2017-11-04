@@ -23,7 +23,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author root
+ * @author Daniil Gentili
  */
 public class TableModel extends AbstractTableModel {
     private String[] columnNames = new String [] {"ID", "Description", "Price", "Count", "Buy"};

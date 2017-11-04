@@ -22,7 +22,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author root
+ * @author Daniil Gentili
  */
 public class TableMouseListener extends MouseAdapter {
     private final JTable table;
@@ -34,7 +34,6 @@ public class TableMouseListener extends MouseAdapter {
     public void mouseClicked(MouseEvent e) {
         int column = table.getColumnModel().getColumnIndexAtX(e.getX()); // get the coloum of the button
         int row = e.getY() / table.getRowHeight(); //get the row of the button
-        System.out.println("got");
         /*Checking the row or column is valid or not*/
         if (row < table.getRowCount() && row >= 0 && column < table.getColumnCount() && column >= 0) {
             Object value = table.getValueAt(row, column);

@@ -17,22 +17,17 @@
 package ui;
 
 import Main.Client;
-import Main.ClientException;
 import Payloads.ServerException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import javax.swing.JPanel;
 
 /**
  *
- * @author root
+ * @author Daniil Gentili
  */
 public class CheckoutButton extends JButton implements ActionListener {
     private Client client;
@@ -44,13 +39,15 @@ public class CheckoutButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         try {
             client.commit();
+            JOptionPane.showMessageDialog(null, "OK!");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Errore I/O", ERROR_MESSAGE);
         } catch (ServerException ex) {
             JOptionPane.showMessageDialog(null, String.format("%d: %s", ex.getPayload().getResponseCode(), ex.getPayload().getResponseDescription()), "Errore del server", ERROR_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null, "OK!");
+        getRootPane().repaint();
     }
 }

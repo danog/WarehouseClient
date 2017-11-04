@@ -28,7 +28,7 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author root
+ * @author Daniil Gentili
  */
 public class TableScrollPane extends JScrollPane {
     public TableScrollPane(Client client, Container container) {

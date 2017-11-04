@@ -23,7 +23,7 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  *
- * @author root
+ * @author Daniil Gentili
  */
 public class TableButtonRenderer implements TableCellRenderer {
     @Override

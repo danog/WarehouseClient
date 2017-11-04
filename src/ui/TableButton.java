@@ -18,24 +18,13 @@ package ui;
 
 import Main.Client;
 import Main.ClientException;
-import Main.Container;
-import Main.Warehouse;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import javax.swing.JTable;
-import javax.swing.table.TableCellRenderer;
 
 /**
  *
- * @author root
+ * @author Daniil Gentili
  */
 public class TableButton extends JButton {
     private Boolean isWarehouse = true;
