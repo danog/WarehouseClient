@@ -28,7 +28,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -71,7 +70,13 @@ public class UI {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent event) {
-                exitProcedure();
+                try {
+                    client.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                frame.dispose();
+                System.exit(0);
             }
         });
         JPanel panel = new JPanel();
@@ -83,16 +88,6 @@ public class UI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-    }
-
-    public void exitProcedure() {
-        try {
-            client.close();
-        } catch (IOException ex) {
-            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        frame.dispose();
-        System.exit(0);
     }
 
     private void refresh() {
@@ -217,7 +212,7 @@ public class UI {
             }
         }
     }
-    
+
     private class TableButton extends JButton {
 
         private Boolean isWarehouse = true;
