@@ -63,8 +63,8 @@ public class UI {
         this.frame = frame;
         this.client = client;
         this.grandTotal = new JLabel("Grand total: " + client.getCart().getPriceTotal().toString());
-        this.warehouseScrollPane = new TableScrollPane(client, client.getWarehouse());
-        this.cartScrollPane = new TableScrollPane(client, client.getCart());
+        this.warehouseScrollPane = new TableScrollPane(client.getWarehouse());
+        this.cartScrollPane = new TableScrollPane(client.getCart());
 
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
@@ -97,7 +97,6 @@ public class UI {
     }
 
     private class CheckoutButton extends JButton implements ActionListener {
-
         public CheckoutButton() {
             super("Checkout");
             this.addActionListener(this);
@@ -119,9 +118,9 @@ public class UI {
 
     private class TableScrollPane extends JScrollPane {
 
-        public TableScrollPane(Client client, Container container) {
+        public TableScrollPane(Container container) {
             super();
-            final JTable table = new JTable(new TableModel(client, container));
+            final JTable table = new JTable(new TableModel(container));
             final TableCellRenderer renderer = new TableCellRenderer() {
                 @Override
                 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -165,11 +164,11 @@ public class UI {
         private final Container container;
         private final TableButton button;
 
-        TableModel(Client client, Container container) {
+        TableModel(Container container) {
             Boolean isWarehouse = container instanceof Warehouse;
             this.columnNames[4] = isWarehouse ? "Buy" : "Remove";
             this.container = container;
-            this.button = new TableButton(isWarehouse, client);
+            this.button = new TableButton(isWarehouse);
         }
 
         public TableButton getButton() {
@@ -216,12 +215,10 @@ public class UI {
     private class TableButton extends JButton {
 
         private Boolean isWarehouse = true;
-        private Client client;
 
-        public TableButton(Boolean isWarehouse, Client client) {
+        public TableButton(Boolean isWarehouse) {
             super();
             this.isWarehouse = isWarehouse;
-            this.client = client;
             this.setText(isWarehouse ? "Buy" : "Remove");
         }
 

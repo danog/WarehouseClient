@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import ui.UI;
 /**
  *
@@ -47,7 +49,7 @@ public class WarehouseClient {
                 try {
                     new UI(new Client("localhost", 9090), new JFrame("Client"));
                 } catch (IOException ex) {
-                    Logger.getLogger(WarehouseClient.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Errore", ERROR_MESSAGE);
                 }
             }
         });
