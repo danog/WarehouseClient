@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import ui.UI;
+import UI.UI;
 /**
  *
  * @author Daniil Gentili

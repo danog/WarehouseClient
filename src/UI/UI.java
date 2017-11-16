@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package ui;
+package UI;
 
 import Main.Client;
 import Main.ClientException;
@@ -85,7 +85,6 @@ public class UI {
         frame.getContentPane().add(this.warehouseScrollPane, BorderLayout.PAGE_START);
         frame.getContentPane().add(this.cartScrollPane, BorderLayout.CENTER);
         frame.getContentPane().add(panel, BorderLayout.PAGE_END);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
